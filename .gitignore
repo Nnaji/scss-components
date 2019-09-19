@@ -1,2 +1,16 @@
 .sass-cache/
 *.css.map
+node_modules
+dist
+build
+*.swp
+.DS_Store
+package-lock.json
+.env
+*.log
+*.swp
+npm-debug.log*
+.eslintcache
+
+
+
