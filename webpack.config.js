@@ -4,27 +4,24 @@
 	@LICENSE: MIT
 	Creation Date : 19.09.2019
 ***************************************************************/
-
+const webpack = require('webpack');
 const HtmlWebbpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
-module.exports = ({mode}) => {
-  console.log(mode);
+module.exports = env => {
+  console.log(env);
 
   return {
-    mode,
+    mode: env.mode,
     output: {
       filename: 'bundle.js',
     },
     module: {
       rules: [
         {
-          test: /\.scss$/,
+          test: /\.s[ac]ss$/i,
           use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
             'style-loader' /* creates style nodes from JS strings */,
+            MiniCssExtractPlugin.loader,
             'css-loader' /* translates CSS into CommonJS */,
             'sass-loader' /* compiles SASS to CSS */,
           ],
@@ -34,13 +31,13 @@ module.exports = ({mode}) => {
 
     plugins: [
       new HtmlWebbpackPlugin({
-        template: './src/index.js',
-        inject: 'body',
+        template: './src/html-template/template.html',
+        title: 'Hello World',
       }),
       new webpack.ProgressPlugin(),
       new MiniCssExtractPlugin({
-        chunkFilename: '[name].css',
         filename: '[name].css',
+        chunkFilename: '[name].css',
       }),
     ],
   };
