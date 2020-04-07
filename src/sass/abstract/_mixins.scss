@@ -1,0 +1,42 @@
+/*
+@AUTHOR: Kingsley Nnaji <kingsley.nnaji@gmail.com>
+@LICENSE: MIT
+Creation Date: 07.04.2020
+*/
+/**************************************************************
+Button Mixins Section
+***************************************************************/
+@mixin makeButton($colortxt, $bgColor) {
+  color: $colortxt;
+  background-color: $bgColor;
+}
+
+/**************************************************************
+Grid Mixins Section
+***************************************************************/
+// Image Grid
+
+@mixin imgGrid($qty, $mrgn) {
+  width: ((100% - (($qty - 1) * $mrgn)) / $qty);
+  &:nth-child(n) {
+    margin-right: $mrgn;
+    margin-bottom: $mrgn;
+    float: left;
+  }
+  &:nth-child(#{$qty}n) {
+    margin-right: 0;
+  }
+}
+// Col Grid
+@mixin makegrid($colsize: 12, $mq: lg, $mrgn: 1%) {
+  @for $i from 1 through $colsize {
+    .col-#{$mq}-#{$i} {
+      width: ((100% / $colsize) * $i - 1%);
+      position: relative;
+      margin: $mrgn;
+      min-height: 1px;
+      float: left;
+      display: block;
+    }
+  }
+}

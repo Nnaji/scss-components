@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /**************************************************************
 	@AUTHOR: Kingsley Nnaji <kingsley.nnaji@gmail.com>
 	@LICENSE: MIT
@@ -7,8 +6,9 @@
 const webpack = require('webpack');
 const HtmlWebbpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const util = require('util');
 module.exports = env => {
-  console.log(env);
+  util.log(env);
 
   return {
     mode: env.mode,

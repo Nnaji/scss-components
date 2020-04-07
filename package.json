@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "webpack": "webpack",
     "test": "mocha",
     "dev": "webpack-dev-server --env.mode development --watch --hot",
-    "build": "webpack --env.mode production"
+    "build": "npm run webpack -- --env.mode production"
   },
   "author": "Kingsley <kingsley.nnaji@gmail.com>",
   "license": "MIT",
